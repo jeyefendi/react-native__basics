@@ -1,23 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from "react-native";
+import styled from "styled-components/native";
+
+const Post = styled.View`
+  padding: 15px;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+`;
+
+const PostImage = styled.Image`
+  width: 100px;
+  height: 100px;
+`;
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View
+      style={{
+        height: "100%",
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Post>
+        <PostImage
+          source={{
+            uri: "https://raw.githubusercontent.com/jeyefendi/jeyefendi/main/public/favicon.webp",
+          }}
+        />
+      </Post>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    color: '#fff',
-  }
-});

@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 const CardView = styled.View`
   flex-direction: row;
-  padding: 15px;
+  paddingTop: 48px;
   border-bottom-width: 2px;
   border-bottom-color: black;
   border-bottom-style: solid;

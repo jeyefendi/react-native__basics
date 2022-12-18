@@ -1,22 +1,20 @@
-import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import {Alert, View } from "react-native";
-import { Card } from "./components/Card";
+import { Card } from "./src/components/Card";
+import api from "./src/services/api";
 
 export default function App() {
-  const [items, setItems] = React.useState();
+  const [items, setItems] = useState([]);
 
-  React.useEffect(() => {
-    axios
-    .get("https://637254d8025414c6370cd9df.mockapi.io/api/characters")
-    .then(({ data }) => {
-      setItems(data);
-    })
-    .catch(err => {
+  const getCharacters = async () => {
+    try {
+      const response = await api.get('/characters');
+      setItems(response);
+    } catch (err) {
       console.log(err);
       Alert.alert('Ошибка', 'Не удалось выполнить запрос');
-    });
-  }, []);
+    }
+  };
 
   return (
     <View>

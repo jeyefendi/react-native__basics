@@ -1,27 +1,30 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React from "react";
 import {Alert, View } from "react-native";
 import { Card } from "./components/Card";
 
 export default function App() {
-  const [items, setItems] = suseState();
+  const [items, setItems] = React.useState();
 
-  useEffect(() => {
-    axios.get("https://api.disneyapi.dev/characters").then(({ data }) => {
+  React.useEffect(() => {
+    axios
+    .get("https://637254d8025414c6370cd9df.mockapi.io/api/characters")
+    .then(({ data }) => {
       setItems(data);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
-      Alert.alert('Ошибка', 'Не удалось выполнить запрос')
-    })
-  });
+      Alert.alert('Ошибка', 'Не удалось выполнить запрос');
+    });
+  }, []);
 
   return (
     <View>
-    {[...items].map((item) => (
+    {items.map((obj) => (
       <Card
-        title={item.name}
-        imageUrl={item.imageUrl}
+        name={obj.name}
+        description={obj.description}
+        avatar={obj.avatar}
       />
     ))}
     </View>

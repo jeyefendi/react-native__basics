@@ -16,17 +16,20 @@ const CardImage = styled.Image`
 `;
 
 const CardTitle = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
 `;
 
-export const Card = ({ title, imageUrl, createdAt }) => {
+const CardDescription = styled.Text`
+  font-size: 14px;
+  font-weight: 400;
+`;
+
+export const Card = ({ name, description, avatar }) => {
     return <CardView>
         <CardImage
-          source={{
-            uri: imageUrl,
-          }}
-        />
-        <CardTitle>{title}</CardTitle>
+          source={{ uri: avatar }} />
+        <CardTitle>{name}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardView>
 }
